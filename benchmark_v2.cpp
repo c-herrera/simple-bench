@@ -37,7 +37,15 @@ using namespace std;
 
 static int id;
 
-enum display_scores { all = 1, integer_only, float_only, string_only, function_call_only };
+enum display_scores 
+{ all = 1, integer_only, float_only, string_only, function_call_only };
+
+enum the_messages
+{ 
+	result_msg = 0, starting_test_msg, save_msg, saved_msg, 
+	int_add_msg, int_sub_msg, int_div_msg, int_mul_msg,
+	dec_add_msg, dev_sub_msg, dec_div_msg, dec_mul_msg,
+};
 
 class BenchMark
 {
@@ -56,7 +64,7 @@ private:
 	double str_result;
 	double func_result;
 	int object_id;
-	string message[20];
+	string message[24];
 	long limits;
 	
 	double sum_int_sum[12];
@@ -180,6 +188,18 @@ BenchMark::BenchMark()
 	message[1] = " Starting all standard test \n";
 	message[2] = " Save the results to a file?\n";
 	message[3] = " Results saved !\n";
+	message[4] = " Integer addtion ";
+	message[5] = " Integer substraction ";
+	message[6] = " Integer division ";
+	message[7] = " Integer multiplication ";
+	
+	message[8] = " Float addtion ";
+	message[9] = " Float substraction ";
+	message[10] = " Float division ";
+	message[11] = " Float multiplication ";
+
+	message[12] = " String " ;
+	message[13] = " Function call ";	
 }
 
 // --------------------------------------------------------------------
@@ -402,8 +422,8 @@ void BenchMark::display_data(int w)
 			cout << " Float division \t" << setprecision(20) << sum_decimal_result << "\n";
 			cout << " Float multiplication \t" << setprecision(20) << sum_decimal_result << "\n";
 			cout << endl;
-			cout << " String test \t" << setprecision(20) << str_result << "\n";
-			cout << " Function call test \t" << setprecision(20) << func_result << "\n";
+			cout << " String \t" << setprecision(20) << str_result << "\n";
+			cout << " Function call \t" << setprecision(20) << func_result << "\n";
 		break;
 		
 		case integer_only:
@@ -436,3 +456,4 @@ void foo (void)
 }
 
 // --------------------------------------------------------------------
+
