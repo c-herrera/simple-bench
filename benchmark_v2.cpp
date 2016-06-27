@@ -44,6 +44,7 @@ enum the_messages
 	result_msg = 0, starting_test_msg, save_msg, saved_msg, 
 	int_add_msg, int_sub_msg, int_div_msg, int_mul_msg,
 	dec_add_msg, dec_sub_msg, dec_div_msg, dec_mul_msg,
+	str_msg, func_msg
 };
 
 class BenchMark
