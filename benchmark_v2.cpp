@@ -405,31 +405,46 @@ void BenchMark::display_data(int w)
 	{
 		case all:
 			cout << endl;
-			cout << message[0] << endl;
-			cout << " Integer addtion \t" << setprecision(20) << sum_int_result << "\n";
-			cout << " Integer substraction \t" << setprecision(20) << sub_int_result << "\n";
-			cout << " Integer division \t" << setprecision(20) << div_int_result << "\n";
-			cout << " Integer multiplication \t" << setprecision(20) << mul_int_result << "\n";
+			cout << message[result_msg] << endl;
+			cout << message[int_add_msg] << setprecision(20) << sum_int_result << "\n";
+			cout << message[int_sub_msg] << setprecision(20) << sub_int_result << "\n";
+			cout << message[int_div_msg] << setprecision(20) << div_int_result << "\n";
+			cout << message[int_mul_msg] << setprecision(20) << mul_int_result << "\n";
 			cout << endl;
-			cout << " Float addtion \t" << setprecision(20) << sum_decimal_result << "\n";
-			cout << " Float substraction \t" << setprecision(20) << sum_decimal_result << "\n";
-			cout << " Float division \t" << setprecision(20) << sum_decimal_result << "\n";
-			cout << " Float multiplication \t" << setprecision(20) << sum_decimal_result << "\n";
+			cout << message[dec_add_msg] << setprecision(20) << sum_decimal_result << "\n";
+			cout << message[dec_sub_msg] << setprecision(20) << sum_decimal_result << "\n";
+			cout << message[dec_div_msg] << setprecision(20) << sum_decimal_result << "\n";
+			cout << message[dec_mul_msg] << setprecision(20) << sum_decimal_result << "\n";
 			cout << endl;
-			cout << " String \t" << setprecision(20) << str_result << "\n";
-			cout << " Function call \t" << setprecision(20) << func_result << "\n";
+			cout << message[str_msg] << setprecision(20) << str_result << "\n";
+			cout << message[func_msg] << setprecision(20) << func_result << "\n";
 		break;
 		
 		case integer_only:
+			cout << endl;
+			cout << message[result_msg] << endl;
+			cout << message[int_add_msg] << setprecision(20) << sum_int_result << "\n";
+			cout << message[int_sub_msg] << setprecision(20) << sub_int_result << "\n";
+			cout << message[int_div_msg] << setprecision(20) << div_int_result << "\n";
+			cout << message[int_mul_msg] << setprecision(20) << mul_int_result << "\n";
+			cout << endl;			
 		break;
 		
 		float_only:
+			cout << endl;
+			cout << message[dec_add_msg] << setprecision(20) << sum_decimal_result << "\n";
+			cout << message[dec_sub_msg] << setprecision(20) << sum_decimal_result << "\n";
+			cout << message[dec_div_msg] << setprecision(20) << sum_decimal_result << "\n";
+			cout << message[dec_mul_msg] << setprecision(20) << sum_decimal_result << "\n";
+			cout << endl;
 		break;
 		
 		string_only:
+			cout << message[str_msg] << setprecision(20) << str_result << "\n";
 		break;
 		
 		function_call_only:
+			cout << message[func_msg] << setprecision(20) << func_result << "\n";
 		break;
 		
 		default:
