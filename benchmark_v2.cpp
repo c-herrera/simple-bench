@@ -350,18 +350,11 @@ double BenchMark::string_test()
 {
 	char string1[10] = {'a','a','a','a','a','a','a','a','\0'};
 	char string2[10] = {'a','b','c','d','e','f','g','h','\0'};
-	int temp = 8;
 	start_time = clock();
 	for (long i = 0; i < limits; i++)
 	{
-		while ( temp >= 0)
-		{
+		for (unsigned char temp = 0; temp< 8; temp++)
 			string1[temp] = string2[temp];
-			temp--;
-		}
-		
-		if (temp == 0)
-			temp = 8;
 	}
 	end_time = clock();
 	str_result = ( (double)end_time - (double)start_time)/CLOCKS_PER_SEC;
