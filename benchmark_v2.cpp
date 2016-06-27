@@ -39,6 +39,13 @@ static int id;
 
 enum display_scores { all = 1, integer_only, float_only, string_only, function_call_only };
 
+enum the_messages
+{ 
+	result_msg = 0, starting_test_msg, save_msg, saved_msg, 
+	int_add_msg, int_sub_msg, int_div_msg, int_mul_msg,
+	dec_add_msg, dec_sub_msg, dec_div_msg, dec_mul_msg,
+};
+
 class BenchMark
 {
 private:
