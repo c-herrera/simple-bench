@@ -64,6 +64,8 @@ private:
 	
 	double str_result;
 	double func_result;
+	double prime_result;
+	
 	int object_id;
 	string message[24];
 	long limits;
@@ -81,6 +83,7 @@ private:
 	
 	double sum_string[12];
 	double sum_func[12];
+	double sum_prime[12];
 	
 	double average_int_sum;
 	double average_int_sub;
@@ -95,6 +98,7 @@ private:
 	
 	double average_string;
 	double average_func;
+	double average_prime;
 	
 	clock_t start_time;	// keeps the start time in each test
 	clock_t end_time;	// keeps the end time for each test
@@ -118,6 +122,7 @@ public:
 	
 	double string_test();
 	double function_call_test();
+	double prime_number_test();
 	
 	void save_results();
 	void display_data(int );
@@ -268,6 +273,12 @@ int BenchMark::standard_run()// All tests
 		sum_func[i] = function_call_test();
 	for (int i = 0; i < 4; i++)
 		cout << " Result of run " << i <<"\t" << sum_func[i] << "\n";
+		
+	cout << " 11 Prime number Test \n";
+	for (int i = 0; i < 4; i++)
+		sum_prime[i] = prime_number_test();
+	for (int i = 0; i < 4; i++)
+		cout << " Result of run " << i <<"\t" << sum_prime[i] << "\n";
 	
 	return 0;
 }
@@ -392,6 +403,33 @@ double BenchMark::function_call_test()
 	func_result = ( (double)end_time - (double)start_time)/CLOCKS_PER_SEC;
 	
 	return func_result;  
+}
+// --------------------------------------------------------------------
+double BenchMark::prime_number_test()
+{
+	long n = limits;
+	long prime = 0;
+	start_time = clock();
+	for (long  i = 2;n > 0; ++i)
+	{
+		bool  isPrime  =  true;
+		for (long  j =  2;  j < i;  ++j)
+		{
+			if (i  % j ==  0)
+			{
+				isPrime  =  false ;
+				break ;
+			}
+		}
+		if (isPrime)
+		{
+			--n;
+			prime =  i;
+		}
+	}
+	end_time = clock();
+	prime_result = ( (double)end_time - (double)start_time)/CLOCKS_PER_SEC;
+	return prime_result;
 }
 // --------------------------------------------------------------------
 void BenchMark::save_results()
