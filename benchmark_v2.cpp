@@ -212,74 +212,74 @@ BenchMark::BenchMark()
 // --------------------------------------------------------------------
 int BenchMark::standard_run()// All tests
 {
-	cout << message[1] << endl;
+	cout << message[starting_test_msg] << endl;
 	cout << endl;
 	limits = _STANDARD_RUN_;
-	cout << " 1 - Integer Addition Test \n";
+	cout << message [int_add_msg] << " \n";
 	for (int i = 0; i < 4; i++)
 		sum_int_sum[i] = sum_int_test();
 	for (int i = 0; i < 4; i++)
-		cout << " Result of run " << i <<"\t" << sum_int_sum[i]<< "\n";
+		cout << message[result_msg] << i <<"\t" << sum_int_sum[i]<< "\n";
 	
-	cout << " 2 - Integer Substraction Test \n";
+	cout << message[int_sub_msg] << " \n";
 	for (int i = 0; i < 4; i++)
 		sum_int_sub[i] = sub_int_test();
 	for (int i = 0; i < 4; i++)
-		cout << " Result of run " << i <<"\t" << sum_int_sub[i]<< "\n";
+		cout << message[result_msg] << i <<"\t" << sum_int_sub[i]<< "\n";
 	
-	cout << " 3 - Integer Division Test \n";
+	cout << message[int_div_msg] << " \n";
 	for (int i = 0; i < 4; i++)
 		sum_int_div[i] = div_int_test();
 	for (int i = 0; i < 4; i++)
-		cout << " Result of run " << i <<"\t" << sum_int_div[i]<< "\n";	
+		cout << message[result_msg] << i <<"\t" << sum_int_div[i]<< "\n";	
 	
-	cout << " 4 - Integer Multiplication Test \n";
+	cout << message[int_mul_msg] << " \n";
 	for (int i = 0; i < 4; i++)
 		sum_int_mul[i] = mul_int_test();
 	for (int i = 0; i < 4; i++)
-		cout << " Result of run " << i <<"\t" << sum_int_mul[i] << "\n";			
+		cout << message[result_msg] << i <<"\t" << sum_int_mul[i] << "\n";			
 	
-	cout << " 5 - Float Addition Test \n";
+	cout << message[dec_add_msg] << " \n";
 	for (int i = 0; i < 4; i++)
 		sum_decimal_sum[i] = sum_decimal_test();
 	for (int i = 0; i < 4; i++)
-		cout << " Result of run " << i <<"\t" << sum_decimal_sum[i] << "\n";
+		cout << message[result_msg] << i <<"\t" << sum_decimal_sum[i] << "\n";
 	
-	cout << " 6 - Float Substraction Test \n";
+	cout << message[dec_sub_msg] << " \n";
 	for (int i = 0; i < 4; i++)
 		sum_decimal_sub[i] = sub_decimal_test();
 	for (int i = 0; i < 4; i++)
-		cout << " Result of run " << i <<"\t" << sum_decimal_sub[i] << "\n";
+		cout << message[result_msg] << i <<"\t" << sum_decimal_sub[i] << "\n";
 	
-	cout << " 7 - Float Division Test \n";
+	cout << message[dec_div_msg] << " \n";
 	for (int i = 0; i < 4; i++)
 		sum_decimal_div[i] = div_decimal_test();
 	for (int i = 0; i < 4; i++)
-		cout << " Result of run " << i <<"\t" << sum_decimal_div[i] << "\n";	
+		cout << message[result_msg] << i <<"\t" << sum_decimal_div[i] << "\n";	
 	
-	cout << " 8 - Float Multiplication Test \n";
+	cout << message[dec_mul_msg] << " \n";
 	for (int i = 0; i < 4; i++)
 		sum_decimal_mul[i] = mul_decimal_test();
 	for (int i = 0; i < 4; i++)
-		cout << " Result of run " << i <<"\t" << sum_decimal_mul[i] << "\n";
+		cout << message[result_msg] << i <<"\t" << sum_decimal_mul[i] << "\n";
 	
-	cout << " 9 - String Test \n";
+	cout << message[str_msg] << " \n";
 	for (int i = 0; i < 4; i++)
 		sum_string[i] = string_test();
 	for (int i = 0; i < 4; i++)
-		cout << " Result of run " << i <<"\t" << sum_string[i] << "\n";
+		cout << message[result_msg] << i <<"\t" << sum_string[i] << "\n";
 	
-	cout << " 10 Function Call Test \n";
+	cout << message[func_msg] << " \n";
 	for (int i = 0; i < 4; i++)
 		sum_func[i] = function_call_test();
 	for (int i = 0; i < 4; i++)
-		cout << " Result of run " << i <<"\t" << sum_func[i] << "\n";
-		
-	cout << " 11 Prime number Test \n";
+		cout << message[result_msg] << i <<"\t" << sum_func[i] << "\n";
+	
+	cout << message[prime_msg] << " \n";
 	for (int i = 0; i < 4; i++)
 		sum_prime[i] = prime_number_test();
 	for (int i = 0; i < 4; i++)
-		cout << " Result of run " << i <<"\t" << sum_prime[i] << "\n";
+		cout << message[result_msg] << i <<"\t" << sum_prime[i] << "\n";
 	
 	return 0;
 }
