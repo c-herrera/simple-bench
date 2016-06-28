@@ -45,7 +45,7 @@ enum the_messages
 	result_msg = 0, starting_test_msg, save_msg, saved_msg, 
 	int_add_msg, int_sub_msg, int_div_msg, int_mul_msg,
 	dec_add_msg, dec_sub_msg, dec_div_msg, dec_mul_msg,
-	str_msg, func_msg
+	str_msg, func_msg, prime_msg
 };
 
 class BenchMark
@@ -205,7 +205,8 @@ BenchMark::BenchMark()
 	message[11] = " Float multiplication ";
 
 	message[12] = " String " ;
-	message[13] = " Function call ";	
+	message[13] = " Function call ";
+	message[14] = " Prime numbers ";
 }
 
 // --------------------------------------------------------------------
@@ -456,6 +457,7 @@ void BenchMark::display_data(int w)
 			cout << endl;
 			cout << message[str_msg] << setprecision(20) << str_result << "\n";
 			cout << message[func_msg] << setprecision(20) << func_result << "\n";
+			cout << message[prime_msg] << setprecision(20) << prime_result << "\n";
 		break;
 		
 		case integer_only:
