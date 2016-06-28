@@ -407,7 +407,7 @@ double BenchMark::function_call_test()
 // --------------------------------------------------------------------
 double BenchMark::prime_number_test()
 {
-	long n = limits;
+	long n = 1000;
 	long prime = 0;
 	start_time = clock();
 	for (long  i = 2;n > 0; ++i)
