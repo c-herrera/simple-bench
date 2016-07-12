@@ -78,7 +78,7 @@ function copy_test_2(){
 
 function copy_test_4(){
 	echo "---------------------------------------------------------"
-	echo " Third test, copying of a created file of 16.0 KiB lenght"
+	echo " Fourth test, copying of a created file of 16.0 KiB lenght"
 	echo " This test will use the same options from last test"
 	for (( r = 0; r < limit; r++))
 	do
@@ -95,7 +95,7 @@ function copy_test_4(){
 
 function copy_test_5(){
 	echo "---------------------------------------------------------"
-	echo " Third test, copying of a created file of 32.0 KiB lenght"
+	echo " Fifth test, copying of a created file of 32.0 KiB lenght"
 	echo " This test will use the same options from last test"
 	for (( r = 0; r < limit; r++))
 	do
@@ -112,7 +112,7 @@ function copy_test_5(){
 
 function copy_test_6(){
 	echo "---------------------------------------------------------"
-	echo " Third test, copying of a created file of 256.0 KiB lenght"
+	echo " Sixth test, copying of a created file of 256.0 KiB lenght"
 	echo " This test will use the same options from last test"
 	for (( r = 0; r < limit; r++))
 	do
