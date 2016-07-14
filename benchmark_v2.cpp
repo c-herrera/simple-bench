@@ -419,58 +419,117 @@ void BenchMark::save_results()
 	// TODO : save to file
 }
 // --------------------------------------------------------------------
-void BenchMark::display_data(int w)
+void BenchMark::display_report(int w)
 {
 	switch(w)
 	{
 		case all:
 			cout << endl;
 			cout << message[result_msg] << endl;
-			cout << message[int_add_msg] << setprecision(20) << sum_int_result << "\n";
-			cout << message[int_sub_msg] << setprecision(20) << sub_int_result << "\n";
-			cout << message[int_div_msg] << setprecision(20) << div_int_result << "\n";
-			cout << message[int_mul_msg] << setprecision(20) << mul_int_result << "\n";
+
+			cout << message[int_add_msg] << setprecision(20) << average_int_sum << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_int_sum[i]<< "\n";
+
+			cout << message[int_sub_msg] << setprecision(20) << average_int_sub << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_int_sub[i]<< "\n";
+
+			cout << message[int_div_msg] << setprecision(20) << average_int_div << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_int_div[i]<< "\n";
+
+			cout << message[int_mul_msg] << setprecision(20) << average_int_mul << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_int_mul[i] << "\n";
+
 			cout << endl;
-			cout << message[dec_add_msg] << setprecision(20) << sum_decimal_result << "\n";
-			cout << message[dec_sub_msg] << setprecision(20) << sum_decimal_result << "\n";
-			cout << message[dec_div_msg] << setprecision(20) << sum_decimal_result << "\n";
-			cout << message[dec_mul_msg] << setprecision(20) << sum_decimal_result << "\n";
+			cout << message[dec_add_msg] << setprecision(20) << average_decimal_sum << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_decimal_sum[i] << "\n";
+
+			cout << message[dec_sub_msg] << setprecision(20) << average_decimal_sub << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_decimal_sub[i] << "\n";
+
+			cout << message[dec_div_msg] << setprecision(20) << average_decimal_div << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_decimal_div[i] << "\n";
+
+			cout << message[dec_mul_msg] << setprecision(20) << average_decimal_mul << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_decimal_mul[i] << "\n";
+
 			cout << endl;
-			cout << message[str_msg] << setprecision(20) << str_result << "\n";
-			cout << message[func_msg] << setprecision(20) << func_result << "\n";
+			cout << message[str_msg] << setprecision(20) << average_string << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_string[i] << "\n";
+
+			cout << message[func_msg] << setprecision(20) << average_func << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_func[i] << "\n";
+
 			cout << message[prime_msg] << setprecision(20) << prime_result << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_prime[i] << "\n";
+
 		break;
-		
+
 		case integer_only:
 			cout << endl;
-			cout << message[result_msg] << endl;
-			cout << message[int_add_msg] << setprecision(20) << sum_int_result << "\n";
-			cout << message[int_sub_msg] << setprecision(20) << sub_int_result << "\n";
-			cout << message[int_div_msg] << setprecision(20) << div_int_result << "\n";
-			cout << message[int_mul_msg] << setprecision(20) << mul_int_result << "\n";
-			cout << endl;			
+			cout << message[int_add_msg] << setprecision(20) << average_int_sum << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_int_sum[i]<< "\n";
+
+			cout << message[int_sub_msg] << setprecision(20) << average_int_sub << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_int_sub[i]<< "\n";
+
+			cout << message[int_div_msg] << setprecision(20) << average_int_div << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_int_div[i]<< "\n";
+
+			cout << message[int_mul_msg] << setprecision(20) << average_int_mul << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_int_mul[i] << "\n";
+			cout << endl;
 		break;
-		
+
 		float_only:
 			cout << endl;
-			cout << message[dec_add_msg] << setprecision(20) << sum_decimal_result << "\n";
-			cout << message[dec_sub_msg] << setprecision(20) << sum_decimal_result << "\n";
-			cout << message[dec_div_msg] << setprecision(20) << sum_decimal_result << "\n";
-			cout << message[dec_mul_msg] << setprecision(20) << sum_decimal_result << "\n";
+			cout << message[dec_add_msg] << setprecision(20) << average_decimal_sum << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_decimal_sum[i] << "\n";
+
+			cout << message[dec_sub_msg] << setprecision(20) << average_decimal_sub << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_decimal_sub[i] << "\n";
+
+			cout << message[dec_div_msg] << setprecision(20) << average_decimal_div << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_decimal_div[i] << "\n";
+
+			cout << message[dec_mul_msg] << setprecision(20) << average_decimal_mul << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_decimal_mul[i] << "\n";
 			cout << endl;
 		break;
-		
+
 		string_only:
-			cout << message[str_msg] << setprecision(20) << str_result << "\n";
+			cout << message[str_msg] << setprecision(20) << average_string << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_string[i] << "\n";
 		break;
-		
+
 		function_call_only:
-			cout << message[func_msg] << setprecision(20) << func_result << "\n";
+			cout << message[func_msg] << setprecision(20) << average_func << "\n";
+			for (int i = 0; i < 4; i++)
+				cout << message[result_msg] << i <<"\t" << sum_func[i] << "\n";
 		break;
-		
+
 		default:
 		break;
-			
+
 	}
 }
 // --------------------------------------------------------------------
