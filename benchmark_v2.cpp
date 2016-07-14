@@ -140,19 +140,19 @@ int main(void)
 {
 	BenchMark bench;
 	int option = 0;
-	
+
 	cout << endl;
 	cout << " This a simple benchmark routine for processors based on x86 instructions\n"
 		<< " Choose an option :\n"
 		<< " 1 - Standard run \n"
 		<< " 2 - User limited run\n";
 	cin >> option;
-	
+
 	switch(option)
 	{
 		case 1:
 			bench.standard_run();
-			bench.display_data(all);
+
 		break;
 		case 2:
 			cout << " Enter a number to run the tests. the greater the number\n"
@@ -162,18 +162,15 @@ int main(void)
 			bench.set_limits(runs);
 			//bench.start_test();
 		break;
-			
+
 		default:
 			bench.standard_run();
 		break;
 	}
-	
 
-	bench.display_data(all);
 	cout << endl;
 	return 0;
 }
-
 // --------------------------------------------------------------------
 BenchMark::BenchMark()
 {
