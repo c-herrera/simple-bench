@@ -6,13 +6,13 @@
 	Version       : 0.0.1
 	Author        : ----
 	Enviroment    : CLI
-	Description   : A simple benchmarking program, only uses 
+	Description   : A simple benchmarking program, only uses
 	basic operations, no reports to file, only console output
-	
+
 	Notes         : revised in february 28
 
 
- ============================================================================	
+ ============================================================================
 */
 
 #include <iostream>
@@ -41,8 +41,8 @@ enum display_scores
 { all = 1, integer_only, float_only, string_only, function_call_only };
 
 enum the_messages
-{ 
-	result_msg = 0, starting_test_msg, save_msg, saved_msg, 
+{
+	result_msg = 0, starting_test_msg, save_msg, saved_msg,
 	int_add_msg, int_sub_msg, int_div_msg, int_mul_msg,
 	dec_add_msg, dec_sub_msg, dec_div_msg, dec_mul_msg,
 	str_msg, func_msg, prime_msg
@@ -56,84 +56,84 @@ private:
 	double sub_int_result;
 	double div_int_result;
 	double mul_int_result;
-	
+
 	double sum_decimal_result;
 	double sub_decimal_result;
 	double div_decimal_result;
 	double mul_decimal_result;
-	
+
 	double str_result;
 	double func_result;
 	double prime_result;
-	
+
 	int object_id;
 	string message[24];
 	long limits;
-	
+	unsigned test_loop;
+
 	double sum_int_sum[12];
 	double sum_int_sub[12];
 	double sum_int_div[12];
 	double sum_int_mul[12];
-	
+
 	double sum_decimal_sum[12];
 	double sum_decimal_sub[12];
 	double sum_decimal_div[12];
-	double sum_decimal_mul[12];	
+	double sum_decimal_mul[12];
 
-	
+
 	double sum_string[12];
 	double sum_func[12];
 	double sum_prime[12];
-	
+
 	double average_int_sum;
 	double average_int_sub;
 	double average_int_div;
 	double average_int_mul;
-	
+
 
 	double average_decimal_sum;
 	double average_decimal_sub;
 	double average_decimal_div;
-	double average_decimal_mul;	
-	
+	double average_decimal_mul;
+
 	double average_string;
 	double average_func;
 	double average_prime;
-	
+
 	clock_t start_time;	// keeps the start time in each test
 	clock_t end_time;	// keeps the end time for each test
-	
+
 public:
-	
-	
+
+
 	BenchMark();
-	
+
 	int standard_run(); // standard run
-	
+
 	double sum_int_test();	// add integer test
 	double sub_int_test();	// Substraction integer test
 	double div_int_test(); // Division integer test
 	double mul_int_test();
-	
+
 	double sum_decimal_test();
 	double sub_decimal_test();
 	double div_decimal_test();
 	double mul_decimal_test();
-	
+
 	double string_test();
 	double function_call_test();
 	double prime_number_test();
-	
+
 	void save_results();
-	void display_data(int );
-	
+	void display_report(int );
+
 	void set_limits(int );
-	
+
 };
 
 
-void foo(void);  	
-
+void foo(void);
 
 
 int main(void)
