@@ -211,76 +211,60 @@ int BenchMark::standard_run()// All tests
 {
 	cout << message[starting_test_msg] << endl;
 	cout << endl;
+	test_loop = 4;
 	limits = _STANDARD_RUN_;
 	cout << message [int_add_msg] << " \n";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < test_loop; i++)
+	{
 		sum_int_sum[i] = sum_int_test();
-	for (int i = 0; i < 4; i++)
-		cout << message[result_msg] << i <<"\t" << sum_int_sum[i]<< "\n";
-	
+		average_int_sum += sum_int_sum[i];
+	}
+	average_int_sum = average_int_sum / test_loop;
+
 	cout << message[int_sub_msg] << " \n";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < test_loop; i++)
 		sum_int_sub[i] = sub_int_test();
-	for (int i = 0; i < 4; i++)
-		cout << message[result_msg] << i <<"\t" << sum_int_sub[i]<< "\n";
-	
+
 	cout << message[int_div_msg] << " \n";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < test_loop; i++)
 		sum_int_div[i] = div_int_test();
-	for (int i = 0; i < 4; i++)
-		cout << message[result_msg] << i <<"\t" << sum_int_div[i]<< "\n";	
-	
+
 	cout << message[int_mul_msg] << " \n";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < test_loop; i++)
 		sum_int_mul[i] = mul_int_test();
-	for (int i = 0; i < 4; i++)
-		cout << message[result_msg] << i <<"\t" << sum_int_mul[i] << "\n";			
-	
+
 	cout << message[dec_add_msg] << " \n";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < test_loop; i++)
 		sum_decimal_sum[i] = sum_decimal_test();
-	for (int i = 0; i < 4; i++)
-		cout << message[result_msg] << i <<"\t" << sum_decimal_sum[i] << "\n";
-	
+
 	cout << message[dec_sub_msg] << " \n";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < test_loop; i++)
 		sum_decimal_sub[i] = sub_decimal_test();
-	for (int i = 0; i < 4; i++)
-		cout << message[result_msg] << i <<"\t" << sum_decimal_sub[i] << "\n";
-	
+
 	cout << message[dec_div_msg] << " \n";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < test_loop; i++)
 		sum_decimal_div[i] = div_decimal_test();
-	for (int i = 0; i < 4; i++)
-		cout << message[result_msg] << i <<"\t" << sum_decimal_div[i] << "\n";	
-	
+
 	cout << message[dec_mul_msg] << " \n";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < test_loop; i++)
 		sum_decimal_mul[i] = mul_decimal_test();
-	for (int i = 0; i < 4; i++)
-		cout << message[result_msg] << i <<"\t" << sum_decimal_mul[i] << "\n";
-	
+
 	cout << message[str_msg] << " \n";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < test_loop; i++)
 		sum_string[i] = string_test();
-	for (int i = 0; i < 4; i++)
-		cout << message[result_msg] << i <<"\t" << sum_string[i] << "\n";
-	
+
 	cout << message[func_msg] << " \n";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < test_loop; i++)
 		sum_func[i] = function_call_test();
-	for (int i = 0; i < 4; i++)
-		cout << message[result_msg] << i <<"\t" << sum_func[i] << "\n";
-	
+
 	cout << message[prime_msg] << " \n";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < test_loop; i++)
 		sum_prime[i] = prime_number_test();
-	for (int i = 0; i < 4; i++)
-		cout << message[result_msg] << i <<"\t" << sum_prime[i] << "\n";
-	
+
+	display_report(all);
 	return 0;
 }
-
+// --------------------------------------------------------------------
 /*int BenchMark::standard_run()
 {
 	
