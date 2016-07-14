@@ -143,8 +143,8 @@ WIDTH=0
 RHEIGHT=22
 RWIDTH=77
 # The ouput temp file to use
-OUTPUT=/home/versus/bin/output.tmp$$
-TMPFILE=/home/versus/bin/testfile.tmp$$
+OUTPUT=$HOME/output.temp$$   #/home/versus/bin/output.tmp$$
+TMPFILE=$HOME/testfile.tmp$$ #/home/versus/bin/testfile.tmp$$
 
 # trap and delete temp files
 trap "rm $OUTPUT; rm $TMPFILE; exit" SIGHUP SIGINT SIGTERM
