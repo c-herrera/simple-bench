@@ -187,13 +187,14 @@ while true; do
 		echo "Program terminated."
 		;;
 		1 )
-		
+
 		limit=32
 		PCT=17
 		(
 		copy_test_1 >> $OUTPUT
 		PCT=`expr $PCT + 10`
 		echo $PCT
+		testprogress=" Test 1 ended "
 		copy_test_2 >> $OUTPUT
 		PCT=`expr $PCT + 10`
 		copy_test_3 >> $OUTPUT
@@ -206,9 +207,9 @@ while true; do
 		echo $PCT
 		copy_test_6 >> $OUTPUT
 		PCT=`expr $PCT + 10`
-		echo $PCT		
-		) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 70 0
-		
+		echo $PCT
+		) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 60 0
+
 		cat $OUTPUT | expand >> $TMPFILE
 		dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
 		;;
@@ -231,10 +232,10 @@ while true; do
 		echo $PCT
 		copy_test_6 >> $OUTPUT
 		PCT=`expr $PCT + 10`
-		echo $PCT		
+		echo $PCT
 		) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 70 0
 		cat $OUTPUT | expand >> $TMPFILE
-		dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH		
+		dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
 		;;
 		3 )
 		limit=128
@@ -255,7 +256,7 @@ while true; do
 		echo $PCT
 		copy_test_6 >> $OUTPUT
 		PCT=`expr $PCT + 10`
-		echo $PCT		
+		echo $PCT
 		) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 70 0
 		cat $OUTPUT | expand >> $TMPFILE
 		dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
