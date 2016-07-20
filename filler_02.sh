@@ -264,6 +264,29 @@ while true; do
 		cat $OUTPUT | expand >> $TMPFILE
 		dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
 		;;
+		4 )
+		limit=256
+		(
+		copy_test_1 >> $OUTPUT
+		PCT=`expr $PCT + 10`
+		echo $PCT
+		copy_test_2 >> $OUTPUT
+		PCT=`expr $PCT + 10`
+		copy_test_3 >> $OUTPUT
+		PCT=`expr $PCT + 10`
+		echo $PCT
+		copy_test_4 >> $OUTPUT
+		PCT=`expr $PCT + 10`
+		copy_test_5 >> $OUTPUT
+		PCT=`expr $PCT + 10`
+		echo $PCT
+		copy_test_6 >> $OUTPUT
+		PCT=`expr $PCT + 10`
+		echo $PCT
+		) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 70 0
+		cat $OUTPUT | expand >> $TMPFILE
+		dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
+		;;
 	esac
 done
 
