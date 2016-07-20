@@ -131,6 +131,7 @@ clear
 today=$(date)
 host=$(hostname)
 linuxver=$(uname -r)
+PCT=0
 # the data to copy
 datatofile="1010101010101010101010101010101"
 limit=8
@@ -152,16 +153,18 @@ trap "rm $OUTPUT; rm $TMPFILE; exit" SIGHUP SIGINT SIGTERM
 
 
 while true; do
+	PCT=17
 	exec 3>&1
 	selection=$(dialog \
 		--backtitle "Simple test for the filesystem" \
-		--title "Menu" \
+		--title "Main Menu" \
 		--clear \
 		--cancel-label "Exit" \
 		--menu "Choose how long the test will last :" $HEIGHT $WIDTH 4 \
 		"1" "32 iterations" \
 		"2" "64 iterations" \
 		"3" "128 iterations" \
+		"4" "256 iterations" \
 		2>&1 1>&3)
 	exit_status=$?
 	exec 3>&-
