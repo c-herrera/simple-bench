@@ -33,7 +33,7 @@ function copy_test_1(){
 			#printf "File created at %s" $(date)
 			#echo "File 'file$b' was created inside $(pwd)"
 		done
-		echo " Done with 'folder_$i' at $(date)"
+		echo " Done with 'folder_$i' at $(date +%I:%M:%S:%N)"
 		cd ..
 	done
 	today=$(date)
@@ -52,7 +52,7 @@ function copy_test_2(){
 		do
 			cp copy_testfile "folder_"$r/"copy_test_"$b
 		done
-		echo " Done with 'folder_$r' at $(date)"
+		echo " Done with 'folder_$r' at $(date +%I:%M:%S:%N)"
 	done
 	today=$(date)
 	echo " Test ended at '$today'"
@@ -70,7 +70,7 @@ function copy_test_2(){
 		do
 			cp copy_testfile1 "folder_"$r/"copy_test1_"$b
 		done
-		echo " Done with 'folder_$r' at $(date)"
+		echo " Done with 'folder_$r' at $(date +%I:%M:%S:%N)"
 	done
 	today=$(date)
 	echo " Test ended at '$today'"
@@ -87,7 +87,7 @@ function copy_test_4(){
 		do
 			cp copy_testfile2 "folder_"$r/"copy_test2_"$b
 		done
-		echo " Done with 'folder_$r' at $(date)"
+		echo " Done with 'folder_$r' at $(date +%I:%M:%S:%N)"
 	done
 	today=$(date)
 	echo " Test ended at '$today'"
@@ -104,7 +104,7 @@ function copy_test_5(){
 		do
 			cp copy_testfile3 "folder_"$r/"copy_test3_"$b
 		done
-		echo " Done with 'folder_$r' at $(date)"
+		echo " Done with 'folder_$r' at $(date +%I:%M:%S:%N)"
 	done
 	today=$(date)
 	echo " Test ended at '$today'"
@@ -121,7 +121,7 @@ function copy_test_6(){
 		do
 			cp copy_testfile4 "folder_"$r/"copy_test4_"$b
 		done
-		echo " Done with 'folder_$r' at $(date)"
+		echo " Done with 'folder_$r' at $(date +%I:%M:%S:%N)"
 	done
 	today=$(date)
 	echo " Test ended at '$today'"
