@@ -146,6 +146,7 @@ int main(void)
 		<< " Choose an option :\n"
 		<< " 1 - Standard run \n"
 		<< " 2 - User limited run\n";
+	cout << " > ";
 	cin >> option;
 
 	switch(option)
@@ -186,16 +187,16 @@ BenchMark::BenchMark()
 	str_result = 0.0;
 	func_result = 0.0;
 	limits = 1000;
-	object_id = ++id;	
-	message[0] = " The result for this run :\t";
-	message[1] = " Starting all standard test \n";
+	object_id = ++id;
+	message[0] = " The result of loop :\t";
+	message[1] = " Starting tests ... \n";
 	message[2] = " Save the results to a file?\n";
 	message[3] = " Results saved !\n";
 	message[4] = " Integer addtion ";
 	message[5] = " Integer substraction ";
 	message[6] = " Integer division ";
 	message[7] = " Integer multiplication ";
-	
+
 	message[8] = " Float addtion ";
 	message[9] = " Float substraction ";
 	message[10] = " Float division ";
@@ -205,6 +206,7 @@ BenchMark::BenchMark()
 	message[13] = " Function call ";
 	message[14] = " Prime numbers ";
 }
+
 
 // --------------------------------------------------------------------
 int BenchMark::standard_run()// All tests
