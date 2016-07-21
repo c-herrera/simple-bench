@@ -223,43 +223,83 @@ int BenchMark::standard_run()// All tests
 
 	cout << message[int_sub_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
+	{
 		sum_int_sub[i] = sub_int_test();
+		average_int_sub += sum_int_sub[i];
+	}
+	average_int_sub = average_int_sub / test_loop;
 
 	cout << message[int_div_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
+	{
 		sum_int_div[i] = div_int_test();
+		average_int_div += sum_int_div[i];
+	}
+	average_int_div = average_int_div / test_loop;
 
 	cout << message[int_mul_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
+	{
 		sum_int_mul[i] = mul_int_test();
+		average_int_mul += sum_int_mul[i];
+	}
+	average_int_sub = average_int_sub / test_loop;
 
 	cout << message[dec_add_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
+	{
 		sum_decimal_sum[i] = sum_decimal_test();
+		average_decimal_sum += sum_decimal_sum[i];
+	}
+	average_decimal_sum = average_decimal_sum / test_loop;
 
 	cout << message[dec_sub_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
+	{
 		sum_decimal_sub[i] = sub_decimal_test();
+		average_decimal_sub += sum_decimal_sub[i];
+	}
+	average_decimal_sub = average_decimal_sub / test_loop;
 
 	cout << message[dec_div_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
+	{
 		sum_decimal_div[i] = div_decimal_test();
+		average_decimal_div += sum_decimal_div[i];
+	}
+	average_decimal_div = average_decimal_div / test_loop;
 
 	cout << message[dec_mul_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
+	{
 		sum_decimal_mul[i] = mul_decimal_test();
+		average_decimal_mul += sum_decimal_mul[i];
+	}
+	average_decimal_mul = average_decimal_mul / test_loop;
 
 	cout << message[str_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
+	{
 		sum_string[i] = string_test();
+		average_int_sub += sum_string[i];
+	}
+	average_string = average_string / test_loop;
 
 	cout << message[func_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
+	{
 		sum_func[i] = function_call_test();
+		average_func += sum_func[i];
+	}
+	average_int_sub = average_int_sub / test_loop;
 
 	cout << message[prime_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
+	{
 		sum_prime[i] = prime_number_test();
+		average_prime += sum_prime[i];
+	}
+	average_prime = average_prime / test_loop;
 
 	display_report(all);
 	return 0;
