@@ -11,36 +11,44 @@
 #	Notes         : Not optimized at all, just to test the speed of my system
 #
 #
-# 
+#
 clear
 today=$(date)
 host=$(hostname)
 linuxver=$(uname -r)
 datatofile="1010101010101010101010101010101"
-limit=8
+limit=0
 echo "-----------------------------------------------------------------"
-echo " Small write test to filesystem"
-echo " This script is running on $host"
-echo " System kernel is $linuxver"
-#sleep 2
-echo " Choose how long the test will last. "
-echo " A higher number means more time to finish, and you can't use the PC meanwhile"
+echo " Simple test for the filesystem"
+echo " This script is running on the host : $host"
+echo " System kernel is : $linuxver"
+echo " A higher number, more time will be required; Try to not use your device"
+echo " while this test is running"
+echo " Choose how long the test will last : "
 echo " 1- 32"
 echo " 2- 64"
 echo " 3- 128"
-read user_opt
+echo " 4- 256"
+echo " 5- Quit"
+read -p " > " user_opt
 case $user_opt in
 	1)
-	limit=32
+		limit=32
 	;;
 	2)
-	limit=64
+		limit=64
 	;;
 	3)
-	limit=128
+		limit=128
+	;;
+	4)
+		limit=256
+	;;
+	5)
+		exit
 	;;
 	*)
-	limit=16
+		limit=16
 	;;
 esac
 clear
