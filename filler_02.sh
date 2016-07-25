@@ -170,122 +170,117 @@ while true; do
 	exec 3>&-
 	case $exit_status in
 		$DIALOG_CANCEL)
-		clear
-		[ -f $OUTPUT ] && rm $OUTPUT
-		[ -f $TMPFILE ] && rm $TMPFILE
-		echo "Program terminated."
-		exit
+			clear
+			[ -f $OUTPUT ] && rm $OUTPUT
+			[ -f $TMPFILE ] && rm $TMPFILE
+			echo "Program terminated."
+			exit
 		;;
 		$DIALOG_ESC)
-		clear
-		[ -f $OUTPUT ] && rm $OUTPUT
-		[ -f $TMPFILE ] && rm $TMPFILE
-		echo "Program aborted." >&2
-		exit 1
+			clear
+			[ -f $OUTPUT ] && rm $OUTPUT
+			[ -f $TMPFILE ] && rm $TMPFILE
+			echo "Program aborted." >&2
+			exit 1
 		;;
 	esac
 	case $selection in
 		0 )
-		clear
-		echo "Program terminated."
+			clear
+			echo "Program terminated."
 		;;
 		1 )
-
-		limit=32
-		PCT=17
-		(
-		copy_test_1 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		testprogress=" Test 1 ended "
-		copy_test_2 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		copy_test_3 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		copy_test_4 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		copy_test_5 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		copy_test_6 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 60 0
-
-		cat $OUTPUT | expand >> $TMPFILE
-		dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
+			limit=32
+			(
+			copy_test_1 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			testprogress=" Test 1 ended "
+			copy_test_2 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			copy_test_3 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			copy_test_4 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			copy_test_5 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			copy_test_6 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 60 0
+			cat $OUTPUT | expand >> $TMPFILE
+			dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
 		;;
 		2 )
-		limit=64
-		PCT=17
-		(
-		copy_test_1 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		copy_test_2 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		copy_test_3 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		copy_test_4 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		copy_test_5 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		copy_test_6 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 70 0
-		cat $OUTPUT | expand >> $TMPFILE
-		dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
+			limit=64
+			(
+			copy_test_1 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			copy_test_2 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			copy_test_3 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			copy_test_4 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			copy_test_5 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			copy_test_6 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 70 0
+			cat $OUTPUT | expand >> $TMPFILE
+			dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
 		;;
 		3 )
-		limit=128
-		PCT=17
-		(
-		copy_test_1 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		copy_test_2 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		copy_test_3 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		copy_test_4 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		copy_test_5 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		copy_test_6 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 70 0
-		cat $OUTPUT | expand >> $TMPFILE
-		dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
+			limit=128
+			(
+			copy_test_1 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			copy_test_2 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			copy_test_3 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			copy_test_4 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			copy_test_5 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			copy_test_6 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 70 0
+			cat $OUTPUT | expand >> $TMPFILE
+			dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
 		;;
 		4 )
-		limit=256
-		(
-		copy_test_1 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		copy_test_2 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		copy_test_3 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		copy_test_4 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		copy_test_5 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		copy_test_6 >> $OUTPUT
-		PCT=`expr $PCT + 10`
-		echo $PCT
-		) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 70 0
-		cat $OUTPUT | expand >> $TMPFILE
-		dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
+			limit=256
+			(
+			copy_test_1 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			copy_test_2 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			copy_test_3 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			copy_test_4 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			copy_test_5 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			copy_test_6 >> $OUTPUT
+			PCT=`expr $PCT + 10`
+			echo $PCT
+			) | dialog --title "Test progress" --gauge "Please wait while test ends..." 20 70 0
+			cat $OUTPUT | expand >> $TMPFILE
+			dialog --backtitle "Sequential Byte Copy test" --title "Results" --textbox "$TMPFILE" $RHEIGHT $RWIDTH
 		;;
 	esac
 done
