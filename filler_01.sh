@@ -52,7 +52,7 @@ case $user_opt in
 	;;
 esac
 clear
-echo " This test started at : $today"
+echo " This test started at : $(date +%D,%I:%M:%S)"
 echo " First test , write multiple files using a fixed 32 character line"
 for (( i=0; i <limit; i++))
 do
@@ -71,16 +71,16 @@ do
 		#printf "File created at %s" $(date)
 		#echo "File 'file$b' was created inside $(pwd)"
 	done
-	echo " Done with 'folder_$i' at $(date)"
+	echo " Done with 'folder_$i' at $(date +%I:%M:%S:%N)"
 	cd ..
 done
 
 today=$(date)
-echo " Test ended at '$today'"
+echo " Test ended at $(date +%D,%I:%M:%S)"
 clear
 echo "---------------------------------------------------------"
 echo " Second test, copying of a created file of 4.0 KiB lenght"
-echo " This test will use the same options from last test"
+echo " This test started at : $(date +%D,%I:%M:%S)"
 for (( r = 0; r < limit; r++))
 do
 	echo "---------------------------------------------------------"
@@ -89,15 +89,14 @@ do
 	do
 		cp copy_testfile "folder_"$r/"copy_test_"$b
 	done
-	echo " Done with 'folder_$r' at $(date)"
+	echo " Done with 'folder_$r' at $(date +%I:%M:%S:%N)"
 done
-today=$(date)
-echo " Test ended at '$today'"
+echo " Test ended at $(date)"
 #
 clear
 echo "---------------------------------------------------------"
 echo " Third test, copying of a created file of 8.0 KiB lenght"
-echo " This test will use the same options from last test"
+echo " This test started at : $(date +%D,%I:%M:%S)"
 for (( r = 0; r < limit; r++))
 do
 	echo "---------------------------------------------------------"
@@ -106,15 +105,14 @@ do
 	do
 		cp copy_testfile1 "folder_"$r/"copy_test1_"$b
 	done
-	echo " Done with 'folder_$r' at $(date)"
+	echo " Done with 'folder_$r' at $(date +%I:%M:%S:%N)"
 done
-today=$(date)
-echo " Test ended at '$today'"
+echo " Test ended at $(date +%D,%I:%M:%S)"
 #
 clear
 echo "---------------------------------------------------------"
 echo " Third test, copying of a created file of 16.0 KiB lenght"
-echo " This test will use the same options from last test"
+echo " This test started at : $(date +%D,%I:%M:%S)"
 for (( r = 0; r < limit; r++))
 do
 	echo "---------------------------------------------------------"
@@ -123,15 +121,15 @@ do
 	do
 		cp copy_testfile2 "folder_"$r/"copy_test2_"$b
 	done
-	echo " Done with 'folder_$r' at $(date)"
+	echo " Done with 'folder_$r' at $(date +%I:%M:%S:%N)"
 done
 today=$(date)
-echo " Test ended at '$today'"
+echo " Test ended at $(date +%D,%I:%M:%S)"
 #
 clear
 echo "---------------------------------------------------------"
 echo " Third test, copying of a created file of 32.0 KiB lenght"
-echo " This test will use the same options from last test"
+echo " This test started at : $(date +%D,%I:%M:%S)"
 for (( r = 0; r < limit; r++))
 do
 	echo "---------------------------------------------------------"
@@ -140,14 +138,14 @@ do
 	do
 		cp copy_testfile3 "folder_"$r/"copy_test3_"$b
 	done
-	echo " Done with 'folder_$r' at $(date)"
+	echo " Done with 'folder_$r' at $(date +%I:%M:%S:%N)"
 done
 today=$(date)
-echo " Test ended at '$today'"
+echo " Test ended at $(date +%D,%I:%M:%S)"
 clear
 echo "---------------------------------------------------------"
 echo " Third test, copying of a created file of 256.0 KiB lenght"
-echo " This test will use the same options from last test"
+echo " This test started at : $(date +%D,%I:%M:%S)"
 for (( r = 0; r < limit; r++))
 do
 	echo "---------------------------------------------------------"
@@ -156,8 +154,8 @@ do
 	do
 		cp copy_testfile4 "folder_"$r/"copy_test4_"$b
 	done
-	echo " Done with 'folder_$r' at $(date)"
+	echo " Done with 'folder_$r' at $(date +%I:%M:%S:%N)"
 done
 today=$(date)
-echo " Test ended at '$today'"
+echo " Test ended at $(date +%D,%I:%M:%S)"
 exit
