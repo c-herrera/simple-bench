@@ -2,7 +2,7 @@
 # 	File          : filler_01.sh
 #	Date          : 05-31-2016
 #	Program name  : space filler
-#	Version       : 0.0.1
+#	Version       : 0.0.2
 #	Author        : ----
 #	Enviroment    : CLI
 #	Description   : This little script will try to create several
