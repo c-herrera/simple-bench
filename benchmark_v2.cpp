@@ -177,6 +177,7 @@ int main(void)
 	{
 		case 1:
 			bench.standard_run();
+			bench.save_results();
 
 		break;
 		case 2:
@@ -192,7 +193,6 @@ int main(void)
 			bench.standard_run();
 		break;
 	}
-
 	cout << endl;
 	return 0;
 }
@@ -200,28 +200,35 @@ int main(void)
 BenchMark::BenchMark()
 {
 	final_score = 0.0;
+
 	sum_int_result = 0.0;
 	sub_int_result = 0.0;
 	div_int_result = 0.0;
 	mul_int_result = 0.0;
+
 	sum_decimal_result = 0.0;
 	sub_decimal_result = 0.0;
 	div_decimal_result = 0.0;
 	mul_decimal_result = 0.0;
+
 	str_result = 0.0;
 	func_result = 0.0;
+	prime_result = 0.0;
+
+	test_loop = 0;
 	limits = 1000;
-	object_id = ++id;
+	object_id= ++id;
+
 	message[0] = " The result of loop :\t";
 	message[1] = " Starting tests ... \n";
 	message[2] = " Save the results to a file?\n";
 	message[3] = " Results saved !\n";
-	message[4] = " Integer addtion ";
+	message[4] = " Integer addition ";
 	message[5] = " Integer substraction ";
 	message[6] = " Integer division ";
 	message[7] = " Integer multiplication ";
 
-	message[8] = " Float addtion ";
+	message[8] = " Float addition ";
 	message[9] = " Float substraction ";
 	message[10] = " Float division ";
 	message[11] = " Float multiplication ";
@@ -230,7 +237,6 @@ BenchMark::BenchMark()
 	message[13] = " Function call ";
 	message[14] = " Prime numbers ";
 }
-
 
 // --------------------------------------------------------------------
 int BenchMark::standard_run()// All tests
