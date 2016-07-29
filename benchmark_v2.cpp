@@ -277,6 +277,7 @@ int BenchMark::standard_run()// All tests
 	}
 	average_int_sub = average_int_sub / test_loop;
 
+	// Start of floating point tests
 	cout << message[dec_add_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
 	{
@@ -309,11 +310,12 @@ int BenchMark::standard_run()// All tests
 	}
 	average_decimal_mul = average_decimal_mul / test_loop;
 
+	// Start of misc tests
 	cout << message[str_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
 	{
 		sum_string[i] = string_test();
-		average_int_sub += sum_string[i];
+		average_string += sum_string[i];
 	}
 	average_string = average_string / test_loop;
 
@@ -323,7 +325,7 @@ int BenchMark::standard_run()// All tests
 		sum_func[i] = function_call_test();
 		average_func += sum_func[i];
 	}
-	average_int_sub = average_int_sub / test_loop;
+	average_func = average_func / test_loop;
 
 	cout << message[prime_msg] << " \n";
 	for (int i = 0; i < test_loop; i++)
@@ -334,6 +336,7 @@ int BenchMark::standard_run()// All tests
 	average_prime = average_prime / test_loop;
 
 	display_report(all);
+
 	return 0;
 }
 // --------------------------------------------------------------------
