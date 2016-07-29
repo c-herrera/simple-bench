@@ -731,7 +731,11 @@ void BenchMark::set_limits(int t)
 	limits = t;
 }
 // --------------------------------------------------------------------
-
+int BenchMark::get_id()
+{
+	return object_id;
+}
+// --------------------------------------------------------------------
 void foo (void)
 {
 	// do something    
