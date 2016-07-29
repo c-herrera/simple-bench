@@ -492,11 +492,129 @@ double BenchMark::prime_number_test()
 void BenchMark::save_results()
 {
 	// TODO : save to file
+	reportfile.open("bench_results.txt", ios::out | ios::app);
+	if ( reportfile.is_open() )
+	{
+		switch(test_id)
+		{
+			case all:
+				reportfile << endl;
+
+				reportfile << message[int_add_msg] << setprecision(20) << average_int_sum << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_int_sum[i]<< "\n";
+
+				reportfile << message[int_sub_msg] << setprecision(20) << average_int_sub << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_int_sub[i]<< "\n";
+
+				reportfile << message[int_div_msg] << setprecision(20) << average_int_div << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_int_div[i]<< "\n";
+
+				reportfile << message[int_mul_msg] << setprecision(20) << average_int_mul << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_int_mul[i] << "\n";
+
+				reportfile << endl;
+				reportfile << message[dec_add_msg] << setprecision(20) << average_decimal_sum << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_decimal_sum[i] << "\n";
+
+				reportfile << message[dec_sub_msg] << setprecision(20) << average_decimal_sub << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_decimal_sub[i] << "\n";
+
+				reportfile << message[dec_div_msg] << setprecision(20) << average_decimal_div << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_decimal_div[i] << "\n";
+
+				reportfile << message[dec_mul_msg] << setprecision(20) << average_decimal_mul << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_decimal_mul[i] << "\n";
+
+				reportfile << endl;
+				reportfile << message[str_msg] << setprecision(20) << average_string << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_string[i] << "\n";
+
+				reportfile << message[func_msg] << setprecision(20) << average_func << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_func[i] << "\n";
+
+				reportfile << message[prime_msg] << setprecision(20) << prime_result << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_prime[i] << "\n";
+
+			break;
+
+			case integer_only:
+				reportfile << endl;
+				reportfile << message[int_add_msg] << setprecision(20) << average_int_sum << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_int_sum[i]<< "\n";
+
+				reportfile << message[int_sub_msg] << setprecision(20) << average_int_sub << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_int_sub[i]<< "\n";
+
+				reportfile << message[int_div_msg] << setprecision(20) << average_int_div << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_int_div[i]<< "\n";
+
+				reportfile << message[int_mul_msg] << setprecision(20) << average_int_mul << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_int_mul[i] << "\n";
+				reportfile << endl;
+			break;
+
+			float_only:
+				reportfile << endl;
+				reportfile << message[dec_add_msg] << setprecision(20) << average_decimal_sum << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_decimal_sum[i] << "\n";
+
+				reportfile << message[dec_sub_msg] << setprecision(20) << average_decimal_sub << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_decimal_sub[i] << "\n";
+
+				reportfile << message[dec_div_msg] << setprecision(20) << average_decimal_div << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_decimal_div[i] << "\n";
+
+				reportfile << message[dec_mul_msg] << setprecision(20) << average_decimal_mul << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_decimal_mul[i] << "\n";
+				reportfile << endl;
+			break;
+
+			string_only:
+				reportfile << message[str_msg] << setprecision(20) << average_string << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_string[i] << "\n";
+			break;
+
+			function_call_only:
+				reportfile << message[func_msg] << setprecision(20) << average_func << "\n";
+				for (int i = 0; i < 4; i++)
+					reportfile << message[result_msg] << i <<"\t" << sum_func[i] << "\n";
+			break;
+
+			default:
+			break;
+		}
+		reportfile.close();
+	}
+	else
+	{
+		cout << endl << " Error on saving the results to a file" << endl;
+	}
 }
 // --------------------------------------------------------------------
-void BenchMark::display_report(int w)
+void BenchMark::display_report(int whose_test)
 {
-	switch(w)
+	test_id = whose_test;
+	switch(test_id)
 	{
 		case all:
 			cout << endl;
