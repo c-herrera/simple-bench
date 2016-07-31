@@ -17,9 +17,10 @@ today=$(date)
 host=$(hostname)
 linuxver=$(uname -r)
 datatofile="1010101010101010101010101010101"
+filler_version=0.0.2
 limit=0
 echo "-----------------------------------------------------------------"
-echo " Simple test for the filesystem"
+echo " Simple test for the filesystem ver. $filler_version"
 echo " This script is running on the host : $host"
 echo " System kernel is : $linuxver"
 echo " A higher number, more time will be required; Try to not use your device"
