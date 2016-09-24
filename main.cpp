@@ -59,7 +59,7 @@ int main(void)
 		cin >> runs;
 		if (runs > 0)
 		{
-			bench.set_limits(runs);
+			bench.set_test_limits(runs);
 			bench.start_custom_run();
 			bench.save_results();
 		}
