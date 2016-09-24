@@ -1,3 +1,18 @@
+/*
+============================================================================
+File          : benchmark_v1.cpp
+Date          : Feb - 28 - 2016
+Program name  : Benchmark in CLI
+Version       : 0.0.3
+Author        : ----
+Enviroment    : CLI
+Description   : A simple benchmarking program, only uses
+basic operations, no reports to file, only console output
+Notes         : revised in february 28
+============================================================================
+*/
+
+
 #pragma once
 
 #define _BENCH_DEBUG_ 	0
@@ -72,20 +87,20 @@ private:
 
 	// these hold all of the results of test, individually
 	// then at the end, they are used to get an average
-	double sum_int_sum[BENCH_SAVE_SLOTS];
-	double sum_int_sub[BENCH_SAVE_SLOTS];
-	double sum_int_div[BENCH_SAVE_SLOTS];
-	double sum_int_mul[BENCH_SAVE_SLOTS];
+	double addtion_test_list[BENCH_SAVE_SLOTS];
+	double substrac_test_list[BENCH_SAVE_SLOTS];
+	double division_test_list[BENCH_SAVE_SLOTS];
+	double mult_test_list[BENCH_SAVE_SLOTS];
 
-	double sum_decimal_sum[BENCH_SAVE_SLOTS];
-	double sum_decimal_sub[BENCH_SAVE_SLOTS];
-	double sum_decimal_div[BENCH_SAVE_SLOTS];
-	double sum_decimal_mul[BENCH_SAVE_SLOTS];
+	double add_float_list[BENCH_SAVE_SLOTS];
+	double sub_float_list[BENCH_SAVE_SLOTS];
+	double div_float_list[BENCH_SAVE_SLOTS];
+	double mul_float_list[BENCH_SAVE_SLOTS];
 
 
-	double sum_string[BENCH_SAVE_SLOTS];
-	double sum_func[BENCH_SAVE_SLOTS];
-	double sum_prime[BENCH_SAVE_SLOTS];
+	double string_result_list[BENCH_SAVE_SLOTS];
+	double function_result_list[BENCH_SAVE_SLOTS];
+	double prime_result_list[BENCH_SAVE_SLOTS];
 
 	// the hold all the average computed from the vars above
 	double average_int_sum;
@@ -107,7 +122,7 @@ private:
 	clock_t start_time;	// keeps the start time in each test
 	clock_t end_time;	// keeps the end time for each test
 	int object_id;  	// we may want more of one	
-	long limits;    	// limit var for several tests
+	long internal_test_limits;    	// limit var for several tests
 	unsigned test_loop; // internal loop var, limited.
 	unsigned block_loop;	// limits the loop per test block
 	unsigned report_loop;	// used to save all the result from the loop
@@ -115,6 +130,8 @@ private:
 	bool is_report_done;	// is the report done ?
 	bool is_report_saved;	// is the report saved?
 	bool is_test_done;		// is the test done?
+	bool show_messages;
+	unsigned index_control;
 	unsigned long the_int_score;
 	double the_float_score;
 	int test_id;
@@ -151,8 +168,16 @@ public:
 	void save_results();
 	void display_report(int);
 
-	void set_limits(int);
+
+	void set_int_score(unsigned long );  // set manually the score var
+	void set_float_score(double );       // set manually the decimal score var
+	void set_test_index(unsigned);       // set the internal var for the list index
+	void set_test_limits(unsigned );     // set the limits of all tests
+	void set_block_limits(unsigned);
+	void set_report_limits(unsigned);
 	int get_id();
+	unsigned long get_int_result();
+	double get_float_result();
 
 
 };
