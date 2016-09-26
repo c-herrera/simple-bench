@@ -1,14 +1,14 @@
 /*
 ============================================================================
-File          : benchmark_v1.cpp
-Date          : Feb - 28 - 2016
-Program name  : Benchmark in CLI
-Version       : 0.0.3
-Author        : ----
-Enviroment    : CLI
-Description   : A simple benchmarking program, only uses
-basic operations, no reports to file, only console output
-Notes         : revised in february 28
+	File          : benchmark_v1.cpp
+	Date          : Feb - 28 - 2016
+	Program name  : Benchmark in CLI
+	Version       : 0.0.4
+	Author        : ----
+	Enviroment    : CLI
+	Description   : A simple benchmarking program, only uses
+					basic operations, no reports to file, only console output
+	Notes         : revised in february 28
 ============================================================================
 */
 
@@ -59,6 +59,8 @@ enum the_messages
 
 #define BENCH_SAVE_SLOTS 32
 
+
+// This is only for the development stage, will be removed in the future
 using namespace std;
 
 class BenchMark
@@ -69,7 +71,7 @@ private:
 	double final_score;
 
 	// these hold the result of integer tests
-	double sum_int_result;
+	double sum_int_result
 	double sub_int_result;
 	double div_int_result;
 	double mul_int_result;
@@ -80,7 +82,7 @@ private:
 	double div_decimal_result;
 	double mul_decimal_result;
 
-	// these hold other tipe of results
+	// these hold other type of results
 	double str_result;
 	double func_result;
 	double prime_result;
@@ -108,12 +110,13 @@ private:
 	double average_int_div;
 	double average_int_mul;
 
-
+	// these hold all the average computed from the decimal type tests
 	double average_decimal_sum;
 	double average_decimal_sub;
 	double average_decimal_div;
 	double average_decimal_mul;
 
+	// these holde all the average computed from the other type tests
 	double average_string;
 	double average_func;
 	double average_prime;
@@ -121,7 +124,7 @@ private:
 	// internal keeping
 	clock_t start_time;	// keeps the start time in each test
 	clock_t end_time;	// keeps the end time for each test
-	int object_id;  	// we may want more of one	
+	int object_id;  	// we may want more of one
 	long internal_test_limits;    	// limit var for several tests
 	unsigned test_loop; // internal loop var, limited.
 	unsigned block_loop;	// limits the loop per test block
@@ -130,11 +133,12 @@ private:
 	bool is_report_done;	// is the report done ?
 	bool is_report_saved;	// is the report saved?
 	bool is_test_done;		// is the test done?
-	bool show_messages;
-	unsigned index_control;
-	unsigned long the_int_score;
-	double the_float_score;
-	int test_id;
+	bool show_tests_messages;  	// show tests show_messages on/off
+	bool show_debug_messages; 	// show internal messages on/off
+	unsigned index_control;  	// control of the result storage array index
+	unsigned long the_int_score; 	// temporal storage of the loops results
+	double the_float_score;      	// temporal storage of the loops results
+	int test_id;     	//
 	ofstream reportfile;
 	string message[24];	// message var array with standar info
 
@@ -144,11 +148,9 @@ public:
 	BenchMark();
 
 	int standard_run(); // standard run
-	int start_custom_run();
+	int start_custom_run(); // To run a test individually, o can use the standard_run
 
-						// To run a test individually, o can use the
-						// standard_run
-						// Integer test are different from floating point
+	// Integer test are different from floating point
 	double sum_int_test();	// add integer test
 	double sub_int_test();	// Substraction integer test
 	double div_int_test();	// Division integer test
@@ -168,16 +170,15 @@ public:
 	void save_results();
 	void display_report(int);
 
-
 	void set_int_score(unsigned long );  // set manually the score var
 	void set_float_score(double );       // set manually the decimal score var
 	void set_test_index(unsigned);       // set the internal var for the list index
 	void set_test_limits(unsigned );     // set the limits of all tests
-	void set_block_limits(unsigned);
-	void set_report_limits(unsigned);
-	int get_id();
-	unsigned long get_int_result();
-	double get_float_result();
+	void set_block_limits(unsigned);     // set the limit of the test calling loops
+	void set_report_limits(unsigned);    // set the limits on the report loop
+	int get_id();                        // return the id of bench
+	unsigned long get_int_result();      // return the result of one of the integer tests
+	double get_float_result();           // return the result of one of the float tests
 
 
 };
