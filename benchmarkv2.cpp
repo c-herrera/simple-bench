@@ -1,24 +1,25 @@
 /*
 ============================================================================
-File          : benchmark_v1.cpp
-Date          : Feb - 28 - 2016
-Program name  : Benchmark in CLI
-Version       : 0.0.3
-Author        : ----
-Enviroment    : CLI
-Description   : A simple benchmarking program, only uses
-basic operations, no reports to file, only console output
-Notes         : revised in february 28
+	File          : benchmark_v1.cpp
+	Date          : Feb - 28 - 2016
+	Program name  : Benchmark in CLI
+	Version       : 0.0.4
+	Author        : ----
+	Enviroment    : CLI
+	Description   : A simple benchmarking program, only uses
+					basic operations, no reports to file, only console output
+	Notes         : revised in february 28
 ============================================================================
 */
 
-#include "benchmarkv2.h"
+#include "benchmark.h"
 
 
 
-
+// Normal Constructor
 BenchMark::BenchMark()
 {
+	// Start up of all internal vars
 	final_score = 0.0;
 
 	sum_int_result = 0.0;
@@ -39,26 +40,8 @@ BenchMark::BenchMark()
 	internal_test_limits = 1000;
 	object_id = ++id;
 
-	message[0] = " The result of loop :\t";
-	message[1] = " Starting tests ... \n";
-	message[2] = " Save the results to a file?\n";
-	message[3] = " Results saved !\n";
-	message[4] = " Integer addition ";
-	message[5] = " Integer substraction ";
-	message[6] = " Integer division ";
-	message[7] = " Integer multiplication ";
-
-	message[8] = " Float addition ";
-	message[9] = " Float substraction ";
-	message[10] = " Float division ";
-	message[11] = " Float multiplication ";
-
-	message[12] = " String ";
-	message[13] = " Function call ";
-	message[14] = " Prime numbers ";
-
 	for (unsigned i = 0; i < BENCH_SAVE_SLOTS; i++)
-	{ 
+	{
 		addtion_test_list[i] = 0;
 		substrac_test_list[i] = 0;
 		division_test_list[i] = 0;
@@ -83,6 +66,26 @@ BenchMark::BenchMark()
 	average_func  =0.0;
 	average_prime = 0.0;
 	index_control = 0;
+
+	// Internal messges, must not change
+	message[0] = " The result of loop :\t";
+	message[1] = " Starting tests ... \n";
+	message[2] = " Save the results to a file?\n";
+	message[3] = " Results saved !\n";
+	message[4] = " Integer addition ";
+	message[5] = " Integer substraction ";
+	message[6] = " Integer division ";
+	message[7] = " Integer multiplication ";
+
+	message[8] = " Float addition ";
+	message[9] = " Float substraction ";
+	message[10] = " Float division ";
+	message[11] = " Float multiplication ";
+
+	message[12] = " String ";
+	message[13] = " Function call ";
+	message[14] = " Prime numbers ";
+
 }
 
 // --------------------------------------------------------------------
@@ -321,7 +324,7 @@ double BenchMark::sub_int_test()	// Substraction integer test
 	for (long i = internal_test_limits; i > 0; --i)
 		temp -= 1;
 	end_time = clock();
-	sub_int_result = ((double)end_time - (double)start_time) / CLOCKS_PER_SEC;
+	sub_int_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	return sub_int_result;
 }
 // --------------------------------------------------------------------
@@ -332,7 +335,7 @@ double BenchMark::div_int_test() 	// Division integer test
 	for (long i = 0; i < internal_test_limits; ++i)
 		temp /= 1;
 	end_time = clock();
-	div_int_result = ((double)end_time - (double)start_time) / CLOCKS_PER_SEC;
+	div_int_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	return div_int_result;
 }
 // --------------------------------------------------------------------
@@ -343,7 +346,7 @@ double BenchMark::mul_int_test()
 	for (long i = 0; i < internal_test_limits; ++i)
 		temp *= i;
 	end_time = clock();
-	mul_int_result = ((double)end_time - (double)start_time) / CLOCKS_PER_SEC;
+	mul_int_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	return mul_int_result;
 }
 // --------------------------------------------------------------------
@@ -354,7 +357,7 @@ double BenchMark::sum_decimal_test()
 	for (long i = 0; i < internal_test_limits; ++i)
 		temp += 1.1;
 	end_time = clock();
-	sum_decimal_result = ((double)end_time - (double)start_time) / CLOCKS_PER_SEC;
+	sum_decimal_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	return sum_decimal_result;
 }
 // --------------------------------------------------------------------
@@ -365,7 +368,7 @@ double BenchMark::sub_decimal_test()
 	for (long i = internal_test_limits; i > 0; --i)
 		temp -= 1.1;
 	end_time = clock();
-	sub_decimal_result = ((double)end_time - (double)start_time) / CLOCKS_PER_SEC;
+	sub_decimal_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	return sub_decimal_result;
 }
 // --------------------------------------------------------------------
@@ -376,7 +379,7 @@ double BenchMark::div_decimal_test()
 	for (long i = 0; i < internal_test_limits; ++i)
 		temp /= 1.1;
 	end_time = clock();
-	div_decimal_result = ((double)end_time - (double)start_time) / CLOCKS_PER_SEC;
+	div_decimal_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	return div_decimal_result;
 }
 
@@ -388,7 +391,7 @@ double BenchMark::mul_decimal_test()
 	for (long i = 0; i < internal_test_limits; ++i)
 		temp *= i;
 	end_time = clock();
-	mul_decimal_result = ((double)end_time - (double)start_time) / CLOCKS_PER_SEC;
+	mul_decimal_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	return mul_decimal_result;
 }
 // --------------------------------------------------------------------
@@ -403,7 +406,7 @@ double BenchMark::string_test()
 			string1[temp] = string2[temp];
 	}
 	end_time = clock();
-	str_result = ((double)end_time - (double)start_time) / CLOCKS_PER_SEC;
+	str_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 
 	return str_result;
 }
@@ -414,7 +417,7 @@ double BenchMark::function_call_test()
 	for (long i = 0; i < internal_test_limits; i++)
 		foo();
 	end_time = clock();
-	func_result = ((double)end_time - (double)start_time) / CLOCKS_PER_SEC;
+	func_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 
 	return func_result;
 }
@@ -442,13 +445,14 @@ double BenchMark::prime_number_test()
 		}
 	}
 	end_time = clock();
-	prime_result = ((double)end_time - (double)start_time) / CLOCKS_PER_SEC;
+	prime_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	return prime_result;
 }
 // --------------------------------------------------------------------
 void BenchMark::save_results()
 {
-	// TODO : save to file
+	int i = 0;
+	// insert check if tests are done "íf"
 	reportfile.open("bench_results.txt", ios::out | ios::app);
 	if (reportfile.is_open())
 	{
@@ -458,49 +462,49 @@ void BenchMark::save_results()
 			reportfile << endl;
 
 			reportfile << message[int_add_msg] << setprecision(20) << average_int_sum << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << addtion_test_list[i] << "\n";
 
 			reportfile << message[int_sub_msg] << setprecision(20) << average_int_sub << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << substrac_test_list[i] << "\n";
 
 			reportfile << message[int_div_msg] << setprecision(20) << average_int_div << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << division_test_list[i] << "\n";
 
 			reportfile << message[int_mul_msg] << setprecision(20) << average_int_mul << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << mult_test_list[i] << "\n";
 
 			reportfile << endl;
 			reportfile << message[dec_add_msg] << setprecision(20) << average_decimal_sum << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << add_float_list[i] << "\n";
 
 			reportfile << message[dec_sub_msg] << setprecision(20) << average_decimal_sub << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << sub_float_list[i] << "\n";
 
 			reportfile << message[dec_div_msg] << setprecision(20) << average_decimal_div << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << div_float_list[i] << "\n";
 
 			reportfile << message[dec_mul_msg] << setprecision(20) << average_decimal_mul << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << mul_float_list[i] << "\n";
 
 			reportfile << endl;
 			reportfile << message[str_msg] << setprecision(20) << average_string << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << string_result_list[i] << "\n";
 
 			reportfile << message[func_msg] << setprecision(20) << average_func << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << function_result_list[i] << "\n";
 
 			reportfile << message[prime_msg] << setprecision(20) << prime_result << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << prime_result_list[i] << "\n";
 
 			break;
@@ -508,19 +512,19 @@ void BenchMark::save_results()
 		case integer_only:
 			reportfile << endl;
 			reportfile << message[int_add_msg] << setprecision(20) << average_int_sum << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << addtion_test_list[i] << "\n";
 
 			reportfile << message[int_sub_msg] << setprecision(20) << average_int_sub << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << substrac_test_list[i] << "\n";
 
 			reportfile << message[int_div_msg] << setprecision(20) << average_int_div << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << division_test_list[i] << "\n";
 
 			reportfile << message[int_mul_msg] << setprecision(20) << average_int_mul << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << mult_test_list[i] << "\n";
 			reportfile << endl;
 			break;
@@ -528,32 +532,32 @@ void BenchMark::save_results()
 		case float_only:
 			reportfile << endl;
 			reportfile << message[dec_add_msg] << setprecision(20) << average_decimal_sum << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << add_float_list[i] << "\n";
 
 			reportfile << message[dec_sub_msg] << setprecision(20) << average_decimal_sub << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << sub_float_list[i] << "\n";
 
 			reportfile << message[dec_div_msg] << setprecision(20) << average_decimal_div << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << div_float_list[i] << "\n";
 
 			reportfile << message[dec_mul_msg] << setprecision(20) << average_decimal_mul << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << mul_float_list[i] << "\n";
 			reportfile << endl;
 			break;
 
 		case string_only:
 			reportfile << message[str_msg] << setprecision(20) << average_string << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << string_result_list[i] << "\n";
 			break;
 
 		case function_call_only:
 			reportfile << message[func_msg] << setprecision(20) << average_func << "\n";
-			for (int i = 0; i < report_loop; i++)
+			for (i = 0; i < report_loop; i++)
 				reportfile << message[result_msg] << i << "\t" << function_result_list[i] << "\n";
 			break;
 
@@ -571,6 +575,8 @@ void BenchMark::save_results()
 // --------------------------------------------------------------------
 void BenchMark::display_report(int whose_test)
 {
+	int i = 0;
+
 	if (is_report_done)
 	{
 		test_id = whose_test;
@@ -581,49 +587,49 @@ void BenchMark::display_report(int whose_test)
 				cout << message[result_msg] << endl;
 
 				cout << message[int_add_msg] << setprecision(20) << average_int_sum << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << addtion_test_list[i] << "\n";
 
 				cout << message[int_sub_msg] << setprecision(20) << average_int_sub << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << substrac_test_list[i] << "\n";
 
 				cout << message[int_div_msg] << setprecision(20) << average_int_div << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << division_test_list[i] << "\n";
 
 				cout << message[int_mul_msg] << setprecision(20) << average_int_mul << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << mult_test_list[i] << "\n";
 
 				cout << endl;
 				cout << message[dec_add_msg] << setprecision(20) << average_decimal_sum << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << add_float_list[i] << "\n";
 
 				cout << message[dec_sub_msg] << setprecision(20) << average_decimal_sub << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << sub_float_list[i] << "\n";
 
 				cout << message[dec_div_msg] << setprecision(20) << average_decimal_div << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << div_float_list[i] << "\n";
 
 				cout << message[dec_mul_msg] << setprecision(20) << average_decimal_mul << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << mul_float_list[i] << "\n";
 
 				cout << endl;
 				cout << message[str_msg] << setprecision(20) << average_string << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << string_result_list[i] << "\n";
 
 				cout << message[func_msg] << setprecision(20) << average_func << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << function_result_list[i] << "\n";
 
 				cout << message[prime_msg] << setprecision(20) << prime_result << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << prime_result_list[i] << "\n";
 
 				break;
@@ -631,19 +637,19 @@ void BenchMark::display_report(int whose_test)
 			case integer_only:
 				cout << endl;
 				cout << message[int_add_msg] << setprecision(20) << average_int_sum << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << addtion_test_list[i] << "\n";
 
 				cout << message[int_sub_msg] << setprecision(20) << average_int_sub << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << substrac_test_list[i] << "\n";
 
 				cout << message[int_div_msg] << setprecision(20) << average_int_div << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << division_test_list[i] << "\n";
 
 				cout << message[int_mul_msg] << setprecision(20) << average_int_mul << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << mult_test_list[i] << "\n";
 				cout << endl;
 				break;
@@ -651,32 +657,32 @@ void BenchMark::display_report(int whose_test)
 			case float_only:
 				cout << endl;
 				cout << message[dec_add_msg] << setprecision(20) << average_decimal_sum << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << add_float_list[i] << "\n";
 
 				cout << message[dec_sub_msg] << setprecision(20) << average_decimal_sub << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << sub_float_list[i] << "\n";
 
 				cout << message[dec_div_msg] << setprecision(20) << average_decimal_div << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << div_float_list[i] << "\n";
 
 				cout << message[dec_mul_msg] << setprecision(20) << average_decimal_mul << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << mul_float_list[i] << "\n";
 				cout << endl;
 				break;
 
 			case string_only:
 				cout << message[str_msg] << setprecision(20) << average_string << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << string_result_list[i] << "\n";
 				break;
 
 			case function_call_only:
 				cout << message[func_msg] << setprecision(20) << average_func << "\n";
-				for (int i = 0; i < report_loop; i++)
+				for (i = 0; i < report_loop; i++)
 					cout << message[result_msg] << i << "\t" << function_result_list[i] << "\n";
 				break;
 
@@ -704,7 +710,7 @@ void BenchMark::set_float_score(double score)
 	the_float_score = score;
 }
 void BenchMark::set_test_index(unsigned n)
-{	
+{
 	index_control = n;
 }
 void BenchMark::set_test_limits(unsigned n)
@@ -737,7 +743,7 @@ double BenchMark::get_float_result()
 // --------------------------------------------------------------------
 void foo(void)
 {
-	// do something    
+	// do something
 }
 
 // --------------------------------------------------------------------
