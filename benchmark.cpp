@@ -1,6 +1,6 @@
 /*
 ============================================================================
-	File          : benchmark_v1.cpp
+	File          : benchmark.cpp
 	Date          : Feb - 28 - 2016
 	Program name  : Benchmark in CLI
 	Version       : 0.0.4
@@ -100,13 +100,13 @@ int BenchMark::standard_run()// All tests
 	set_test_limits_to(_STANDARD_RUN_);
 	set_block_limits_to(4);
 	set_report_limits_to(4);
+	display_tests_messages(true);
 
 	unsigned i = 0;
 
 	set_index_list_to(0);
 
 	// run addition integer test
-	cout << message[int_add_msg] << " \n";
 	for ( i = 0; i < block_loop; i++)
 	{
 		sum_int_test();
@@ -116,7 +116,6 @@ int BenchMark::standard_run()// All tests
 	set_index_list_to(0);
 
 	// run substraction integer tests
-	cout << message[int_sub_msg] << " \n";
 	for ( i = 0; i < block_loop; i++)
 	{
 		sub_int_test();
@@ -126,7 +125,6 @@ int BenchMark::standard_run()// All tests
 	set_index_list_to(0);
 
 	// run division integer tests
-	cout << message[int_div_msg] << " \n";
 	for ( i = 0; i < block_loop; i++)
 	{
 		div_int_test();
@@ -136,7 +134,6 @@ int BenchMark::standard_run()// All tests
 	set_index_list_to(0);
 
 	// run multiplication integer tests
-	cout << message[int_mul_msg] << " \n";
 	for ( i = 0; i < block_loop; i++)
 	{
 		mul_int_test();
@@ -147,7 +144,6 @@ int BenchMark::standard_run()// All tests
 
 	// Start of floating point tests
 	// run add float tests
-	cout << message[dec_add_msg] << " \n";
 	for ( i = 0; i < block_loop; i++)
 	{
 		sum_decimal_test();
@@ -157,7 +153,6 @@ int BenchMark::standard_run()// All tests
 	set_index_list_to(0);
 
 	// substraction float tests
-	cout << message[dec_sub_msg] << " \n";
 	for ( i = 0; i < block_loop; i++)
 	{
 		sub_float_list[i] = sub_decimal_test();
@@ -167,7 +162,6 @@ int BenchMark::standard_run()// All tests
 	set_index_list_to(0);
 
 	// division float tests
-	cout << message[dec_div_msg] << " \n";
 	for ( i = 0; i < block_loop; i++)
 	{
 		div_float_list[i] = div_decimal_test();
@@ -177,7 +171,6 @@ int BenchMark::standard_run()// All tests
 	set_index_list_to(0);
 
 	// floation point mult tests
-	cout << message[dec_mul_msg] << " \n";
 	for ( i = 0; i < block_loop; i++)
 	{
 		mul_float_list[i] = mul_decimal_test();
@@ -189,7 +182,6 @@ int BenchMark::standard_run()// All tests
 
 	// Start of misc tests
 	// simple String copy
-	cout << message[str_msg] << " \n";
 	for ( i = 0; i < block_loop; i++)
 	{
 		string_test();
@@ -199,20 +191,18 @@ int BenchMark::standard_run()// All tests
 	set_index_list_to(0);
 
 	// function call test
-	cout << message[func_msg] << " \n";
 	for ( i = 0; i < block_loop; i++)
 	{
-		function_result_list[i] = function_call_test();
+		function_call_test();
 		average_func += function_result_list[i];
 	}
 	average_func = average_func / block_loop;
 	set_index_list_to(0);
 
 	// prime number test
-	cout << message[prime_msg] << " \n";
 	for ( i = 0; i < block_loop; i++)
 	{
-		prime_result_list[i] = prime_number_test();
+		prime_number_test();
 		average_prime += prime_result_list[i];
 	}
 	average_prime = average_prime / block_loop;
@@ -335,8 +325,12 @@ int BenchMark:: start_custom_run()
 double BenchMark::sum_int_test()	// add integer test
 {
 	long temp = 0;
+
+	if (show_tests_messages)
+		cout << message[int_add_msg] << " \n";
+
 	start_time = clock();
-	for (long i = 0; i < internal_test_limits; ++i)
+	for (unsigned long i = 0; i < internal_test_limits; ++i)
 		temp += 1;
 	end_time = clock();
 	sum_int_result = (double) (end_time - start_time) / CLOCKS_PER_SEC;
@@ -348,8 +342,10 @@ double BenchMark::sum_int_test()	// add integer test
 double BenchMark::sub_int_test()	// Substraction integer test
 {
 	long temp = 0;
+	if (show_tests_messages)
+		cout << message[int_sub_msg] << " \n";
 	start_time = clock();
-	for (long i = internal_test_limits; i > 0; --i)
+	for (unsigned long i = internal_test_limits; i > 0; --i)
 		temp -= 1;
 	end_time = clock();
 	sub_int_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -361,8 +357,10 @@ double BenchMark::sub_int_test()	// Substraction integer test
 double BenchMark::div_int_test() 	// Division integer test
 {
 	long temp = 1;
+	if (show_tests_messages)
+		cout << message[int_div_msg] << " \n";
 	start_time = clock();
-	for (long i = 0; i < internal_test_limits; ++i)
+	for (unsigned long i = 0; i < internal_test_limits; ++i)
 		temp /= 1;
 	end_time = clock();
 	div_int_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -374,8 +372,11 @@ double BenchMark::div_int_test() 	// Division integer test
 double BenchMark::mul_int_test()
 {
 	long temp = 1;
+	if (show_tests_messages)
+		cout << message[int_mul_msg] << " \n";
+
 	start_time = clock();
-	for (long i = 0; i < internal_test_limits; ++i)
+	for (unsigned long i = 0; i < internal_test_limits; ++i)
 		temp *= i;
 	end_time = clock();
 	mul_int_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -387,8 +388,11 @@ double BenchMark::mul_int_test()
 double BenchMark::sum_decimal_test()
 {
 	double temp = 0;
+	if (show_tests_messages)
+		cout << message[dec_add_msg] << " \n";
+
 	start_time = clock();
-	for (long i = 0; i < internal_test_limits; ++i)
+	for (unsigned long i = 0; i < internal_test_limits; ++i)
 		temp += 1.1;
 	end_time = clock();
 	sum_decimal_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -400,8 +404,11 @@ double BenchMark::sum_decimal_test()
 double BenchMark::sub_decimal_test()
 {
 	double temp = 1;
+	if (show_tests_messages)
+		cout << message[dec_sub_msg] << " \n";
+
 	start_time = clock();
-	for (long i = internal_test_limits; i > 0; --i)
+	for (unsigned long i = internal_test_limits; i > 0; --i)
 		temp -= 1.1;
 	end_time = clock();
 	sub_decimal_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -413,8 +420,11 @@ double BenchMark::sub_decimal_test()
 double BenchMark::div_decimal_test()
 {
 	double temp = 1;
+	if (show_tests_messages)
+		cout << message[dec_div_msg] << " \n";
+
 	start_time = clock();
-	for (long i = 0; i < internal_test_limits; ++i)
+	for (unsigned long i = 0; i < internal_test_limits; ++i)
 		temp /= 1.1;
 	end_time = clock();
 	div_decimal_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -427,8 +437,11 @@ double BenchMark::div_decimal_test()
 double BenchMark::mul_decimal_test()
 {
 	double temp = 1.0;
+	if (show_tests_messages)
+		cout << message[dec_mul_msg] << " \n";
+
 	start_time = clock();
-	for (long i = 0; i < internal_test_limits; ++i)
+	for (unsigned long i = 0; i < internal_test_limits; ++i)
 		temp *= i;
 	end_time = clock();
 	mul_decimal_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -441,8 +454,10 @@ double BenchMark::string_test()
 {
 	char string1[10] = { 'a','a','a','a','a','a','a','a','\0' };
 	char string2[10] = { 'a','b','c','d','e','f','g','h','\0' };
+	if (show_tests_messages)
+		cout << message[str_msg] << " \n";
 	start_time = clock();
-	for (long i = 0; i < internal_test_limits; i++)
+	for (unsigned long i = 0; i < internal_test_limits; i++)
 	{
 		for (unsigned char temp = 0; temp< 8; temp++)
 			string1[temp] = string2[temp];
@@ -456,8 +471,11 @@ double BenchMark::string_test()
 // --------------------------------------------------------------------
 double BenchMark::function_call_test()
 {
+	if (show_tests_messages)
+		cout << message[func_msg] << " \n";
+
 	start_time = clock();
-	for (long i = 0; i < internal_test_limits; i++)
+	for (unsigned long i = 0; i < internal_test_limits; i++)
 		foo();
 	end_time = clock();
 	func_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -470,8 +488,11 @@ double BenchMark::prime_number_test()
 {
 	long n = 1000;
 	long prime = 0;
+	if (show_tests_messages)
+		cout << message[prime_msg] << " \n";
+
 	start_time = clock();
-	for (long i = 2; n > 0; ++i)
+	for (unsigned long i = 2; n > 0; ++i)
 	{
 		bool  isPrime = true;
 		for (long j = 2; j < i; ++j)
@@ -789,6 +810,14 @@ unsigned long BenchMark::get_int_result()
 double BenchMark::get_float_result()
 {
 	return the_float_score;
+}
+void BenchMark::display_tests_messages(bool b)
+{
+	show_tests_messages = b;
+}
+void BenchMark::display_debug_messages(bool b)
+{
+	show_debug_messages = b;
 }
 // --------------------------------------------------------------------
 void foo(void)
