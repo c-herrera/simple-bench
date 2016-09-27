@@ -1,6 +1,6 @@
 /*
 ============================================================================
-	File          : benchmark_v1.cpp
+	File          : benchmark.cpp
 	Date          : Feb - 28 - 2016
 	Program name  : Benchmark in CLI
 	Version       : 0.0.4
@@ -179,6 +179,8 @@ public:
 	int get_id();                        // return the id of bench
 	unsigned long get_int_result();      // return the result of one of the integer tests
 	double get_float_result();           // return the result of one of the float tests
+	void display_tests_messages(bool);
+	void display_debug_messages(bool);
 
 
 };
