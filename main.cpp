@@ -19,6 +19,11 @@
 
 //using namespace std;
 
+#ifndef _PROGRAM_VERSION_
+#define _PROGRAM_VERSION_ "0.0.4"
+#endif
+
+
 #ifndef WINCONSOLE
 #define WINCONSOLE 1
 #endif
@@ -47,6 +52,7 @@ int main(void)
 		cout << "=";
 	cout << endl;
 	cout << " This a simple benchmark routine for processors based on x86 instructions\n"
+		<< " Current version is " << _PROGRAM_VERSION_ << "\n"
 		<< " Choose an option :\n"
 		<< " 1 - Standard run \n"
 		<< " 2 - User limited run\n\n\n";
@@ -55,32 +61,32 @@ int main(void)
 
 	switch (option)
 	{
-	case 1:
-		bench.standard_run();
-		bench.save_results();
-
-		break;
-	case 2:
-		for (int i=0; i < 72; i++)
-			cout << "=";
-		cout << endl;
-		cout << " Enter a number to run the tests. the greater the number\n"
-			<< " The longer it will take to finish the test\n";
-		unsigned long runs;
-		cin >> runs;
-		if (runs > 0 || runs > 1000)
-		{
-			bench.set_test_limits(runs);
-			bench.start_custom_run();
+		case 1:
+			bench.standard_run();
 			bench.save_results();
-		}
-		else
-			cout << " Invalid input or too short to set a bench run \n";
-		break;
 
-	default:
-		bench.standard_run();
-		break;
+			break;
+		case 2:
+			for (int i=0; i < 72; i++)
+				cout << "=";
+			cout << endl;
+			cout << " Enter a number to run the tests. the greater the number\n"
+				<< " The longer it will take to finish the test\n";
+			unsigned long runs;
+			cin >> runs;
+			if (runs > 0 || runs > 1000)
+			{
+				bench.set_test_limits_to(runs);
+				bench.start_custom_run();
+				bench.save_results();
+			}
+			else
+				cout << " Invalid input or too short to set a bench run \n";
+			break;
+
+		default:
+			bench.standard_run();
+			break;
 	}
 
 	cout << endl;
