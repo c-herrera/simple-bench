@@ -1,6 +1,6 @@
 /*
 ============================================================================
-	File          : benchmark.cpp
+	File          : benchmark_v1.cpp
 	Date          : Feb - 28 - 2016
 	Program name  : Benchmark in CLI
 	Version       : 0.0.4
@@ -135,6 +135,7 @@ private:
 	bool is_test_done;		// is the test done?
 	bool show_tests_messages;  	// show tests show_messages on/off
 	bool show_debug_messages; 	// show internal messages on/off
+	bool show_tests_messages_once;
 	unsigned long index_control;  	// control of the result storage array index
 	unsigned long the_int_score; 	// temporal storage of the loops results
 	double the_float_score;      	// temporal storage of the loops results
