@@ -1,6 +1,6 @@
 /*
 ============================================================================
-	File          : benchmark.cpp
+	File          : benchmark_v1.cpp
 	Date          : Feb - 28 - 2016
 	Program name  : Benchmark in CLI
 	Version       : 0.0.4
@@ -105,7 +105,7 @@ int BenchMark::standard_run()// All tests
 	unsigned i = 0;
 
 	set_index_list_to(0);
-
+	show_tests_messages_once = true;
 	// run addition integer test
 	for ( i = 0; i < block_loop; i++)
 	{
@@ -342,7 +342,7 @@ double BenchMark::sum_int_test()	// add integer test
 double BenchMark::sub_int_test()	// Substraction integer test
 {
 	long temp = 0;
-	if (show_tests_messages)
+	if (show_tests_messages == true && show_tests_messages_once == true)
 		cout << message[int_sub_msg] << " \n";
 	start_time = clock();
 	for (unsigned long i = internal_test_limits; i > 0; --i)
@@ -350,7 +350,7 @@ double BenchMark::sub_int_test()	// Substraction integer test
 	end_time = clock();
 	sub_int_result = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	sub_int_list[index_control++] = sub_int_result;
-
+	show_tests_messages_once = false;
 	return sub_int_result;
 }
 // --------------------------------------------------------------------
@@ -519,7 +519,7 @@ double BenchMark::prime_number_test()
 void BenchMark::save_results()
 {
 	unsigned i = 0;
-	// insert check if tests are done "Ã­f"
+	// insert check if tests are done "íf"
 	reportfile.open("bench_results.txt", ios::out | ios::app);
 	if (reportfile.is_open())
 	{
