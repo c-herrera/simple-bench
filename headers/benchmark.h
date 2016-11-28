@@ -187,6 +187,7 @@ public:
 	int get_id();                        // return the id of bench
 	unsigned long get_int_result();      // return the result of one of the integer tests
 	double get_float_result();           // return the result of one of the float tests
+	void display_debug_msg();
 
 
 };
