@@ -784,4 +784,8 @@ void foo(void)
 }
 
 // --------------------------------------------------------------------
+void BenchMark::display_debug_messages(bool)
+{
+	//
+}
 
