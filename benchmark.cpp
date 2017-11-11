@@ -22,7 +22,7 @@ BenchMark::BenchMark()
 	// Start up of all internal vars
 	final_score = 0.0;
 
-	sum_int_result = 0.0;
+	sum_int_result = 0.1;
 	sub_int_result = 0.0;
 	div_int_result = 0.0;
 	mul_int_result = 0.0;
